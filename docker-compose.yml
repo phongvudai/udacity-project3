@@ -1,0 +1,70 @@
+version: "3"
+services:
+  nginx:
+    depends_on:
+      - users
+      - feed
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "3001:80"
+  users:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: "./udagram-api-user"
+    volumes:
+      - /app/node_modules
+      - ./users:/app
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=database-3.cwd19revbd1j.us-east-1.rds.amazonaws.com
+      - POSTGRES_DB=postgres
+      - AWS_BUCKET=test-ff1732da23c2-dev
+      - AWS_REGION=us-east-1
+      - AWS_PROFILE=default
+      - JWT_SECRET=testing
+      - URL=http://localhost:8102
+  feed:
+    stdin_open: true
+    restart: always
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=database-3.cwd19revbd1j.us-east-1.rds.amazonaws.com
+      - POSTGRES_DB=postgres
+      - AWS_BUCKET=test-ff1732da23c2-dev
+      - AWS_REGION=us-east-1
+      - AWS_PROFILE=default
+      - JWT_SECRET=testing
+      - URL=http://localhost:8102
+      - AWS_ACCESS_KEY_ID=ASIA472D5SQW6QPIMQ5G
+      - AWS_SECRET_ACCESS_KEY=3I2wVf5Y+9QgLaOC744ClbdWO9Q3tubvv+2KKOnh
+      - AWS_SESSION_TOKEN=FwoGZXIvYXdzEKn//////////wEaDAkgbsqXV9mCCrS9FCLVATsn1K/pT8np+aPU78vxR8vfpJK89OHqjhO9gFRkOKjwCPv26uV/mNsm6122U7ba8RY5XaucpXjVL/wQ3uuAoPjX0tXxgeXkoQT3VSIzY68YK4VuoELf4twtWS0zdSnE+nyxBoXy7S49ytOjp9Pe5hOwjPAXqilZE05rynrBiKLxM6fPefuxZvHKA1DZr56vacNTiqIJxHz0HQRNBp439shGWSJU7dno/o4cJQI2UgO3XuF3ylx2GRqcYa2YbBYhA1Rdg7oUoTRqHt8ra+joiJtcI4d0MyjG0OCnBjItPWHSuhB9CV/0JA9b22HsX1NhD7aWf4TxgMc1WQL7VbsXe+lgOnd9KRSrLq5G
+    build:
+      dockerfile: Dockerfile
+      context: ./udagram-api-feed
+    volumes:
+      - /app/node_modules
+      - ./feed:/app
+  frontend:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: "./udagram-frontend"
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=database-3.cwd19revbd1j.us-east-1.rds.amazonaws.com
+      - POSTGRES_DB=postgres
+      - AWS_BUCKET=test-ff1732da23c2-dev
+      - AWS_REGION=us-east-1
+      - AWS_PROFILE=default
+      - JWT_SECRET=testing
+      - URL=http://localhost:80

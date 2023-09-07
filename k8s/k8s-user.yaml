@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-app
+  labels:
+    app: users-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users-app
+  template:
+    metadata:
+      labels:
+        app: users-app
+    spec:
+      containers:
+        - name: users-app
+          image: 179266296566.dkr.ecr.us-east-1.amazonaws.com/users:latest
+          env:
+            - name: POSTGRES_USERNAME
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "postgres"
+            - name: POSTGRES_DB
+              value: "lesson3"
+            - name: POSTGRES_HOST
+              value: "database-1.c5ejl9ytcwto.us-east-1.rds.amazonaws.com"
+            - name: AWS_REGION
+              value: "us-east-1"
+            - name: AWS_PROFILE
+              value: "default"
+            - name: AWS_BUCKET
+              value: "space-finder-photos-0a07cb90da45"
+            - name: JWT_SECRET
+              value: "testing"
+            - name: AWS_ACCESS_KEY_ID
+              value: "ASIASTPI2TL3JRAXTUH3"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "X5HBqZNLERpci3/KHxRvsy/+v3CZNcnksDg/DQvE"
+            - name: AWS_SESSION_TOKEN
+              value: "FwoGZXIvYXdzELv//////////wEaDMINFgM/OWbpOkozeCLVAV2aU00LIecwSOl33SVelHzrc5VjIsXBHz/xZFu7D5KGT7972wetluFErmDRhUk0l4SDA39sTu5Vxs+agjXziXki2lKjirXjC39vzrYKbm99k7OLneils8QyWh5BYUJgM8UKwDNJB3Wu/Il2K3zURKwo9EZBii0T+iVs6UTpexxaxfyNuNMsGHmwald0JtYheqnabht5+MY0Fzy8Jo6stsRpJagWBAmufBN/TXz+iuHpjS8I+FVtXX81hM7KquClZoooejrRfRTcqbgz+PsHlX7FeIBVcyi+2eSnBjItnY9W4WgTnb1+WHyTQG6nMfNoAVOQSd5JuJyXAx9JADZdY8zbqIZGBaMoOF+E"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-app
+  labels:
+    run: users-app
+spec:
+  ports:
+    - port: 8082
+      targetPort: 8082
+      protocol: TCP
+  selector:
+    app: users-app
