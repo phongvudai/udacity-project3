@@ -37,11 +37,11 @@ spec:
             - name: JWT_SECRET
               value: "testing"
             - name: AWS_ACCESS_KEY_ID
-              value: "ASIASTPI2TL3JCQJWH6G"
+              value: "ASIASTPI2TL3LC5FKZNO"
             - name: AWS_SECRET_ACCESS_KEY
-              value: "Bak92YrhC6RXAavTecJRNFPCg1AO3QTn9QCButzt"
+              value: "fmOwFYNubWnaJN4J859J+R31mg4iyso+42A6IUaq"
             - name: AWS_SESSION_TOKEN
-              value: "FwoGZXIvYXdzEPb//////////wEaDBDVKIzX8T9Zv1wtECLVAZOGx2HaWguVwNhPW2htsGVws0774V0ExFaxuEDrJfMqYUGaPNx7QD5TsnlXfqd9gGHKR+tKIpumnp0aTmtutg5XXvo7XbGi+jW/PuooHp3ACzHn625GaTGnOVtpgQ9WYN1aQu+TbeJDt9f/N5B0Ozej2J60G1gE8/GQrsNM3dj9mZZNszzx2hrdzTQE6a6SmmjQE8F6udPjClq6KCDasFxUN8rioV7OBhhT1Fib1TmVszsevaCKkKVFlO0rv9NyBafmJzG/MzkRcKuZzr46ApOsnokCLSibw/GnBjItO/eJ66uSYrIsidsEUVbJNWCO5EyETJ2ltA4IzramEGHsDipNGp71ZR2wZnxq"
+              value: "FwoGZXIvYXdzEPr//////////wEaDMGR8wJzCJQ4GtcwtiLVAdzH6EaLA1P/gDOGeBt/xq5GQXVR9rok4byAChj5Rk8waIAEwd3ZwGtKctB1PNl5EH3BJfH8F0xmwsGPKHyh2ws2bYg/eWHpNrl8v/i0hXyOuxV1uIplb/FQkepznZeUmsYZ4x5DWJ8y6eHP0N8201Wbjq+aIET8kMPeNa3EtnEFz7EOJIpVjX2iOC88U0zoJueK/UbWPfQdyyxzfQPQ9RzHubTV0JLUTJCN9WWOd42XgFWnnI7PILWr2CZSQ2gPSbcyKZAXmP2BrNp6ZeO1ZwIWSf0u7ij6uvKnBjIt4nDt6Ctq7GcAE3VlbL5OwN2kb5GHPCKM+uEa396VfgtS3IupFderHpRsCvE+"
 ---
 apiVersion: v1
 kind: Service
