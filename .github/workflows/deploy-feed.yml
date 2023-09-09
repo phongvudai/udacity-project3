@@ -3,8 +3,8 @@ name: Deploy feed to production
 on:
   pull_request:
     branches: [main]
-    paths:
-      - "udagram-api-feed/**"
+    # paths:
+    #   - "udagram-api-feed/**"
 
 jobs:
   deploy:

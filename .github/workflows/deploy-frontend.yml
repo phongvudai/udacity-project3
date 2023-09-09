@@ -3,8 +3,8 @@ name: Deploy frontend to production
 on:
   pull_request:
     branches: [main]
-    paths:
-      - "udagram-frontend/**"
+    # paths:
+    #   - "udagram-frontend/**"
 
 jobs:
   deploy:
